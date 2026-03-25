@@ -120,7 +120,7 @@ export function DonorInfoStep({ form, isSubmitting }: Props) {
           name="companyName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="font-semibold">Organisation/Company Name</FormLabel>
+              <FormLabel className="font-semibold">Organisation/Company Name *</FormLabel>
               <FormControl>
                 <Input
                   placeholder="Your organisation name"

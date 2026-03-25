@@ -233,10 +233,12 @@ export function GiftInKindForm({
 
                 <Form {...form}>
                   <form
-                    onSubmit={handleSubmit(onSubmit)}
+                    onSubmit={(e) => {
+                      // Never auto-submit — all submission is via explicit button click
+                      e.preventDefault();
+                    }}
                     onKeyDown={(e) => {
                       // Always prevent Enter key from submitting form
-                      // Submission only happens via explicit Submit button click
                       if (e.key === "Enter") {
                         e.preventDefault();
                       }
@@ -276,7 +278,14 @@ export function GiftInKindForm({
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
                       ) : (
-                        <Button type="submit" disabled={isSubmitting}>
+                        <Button
+                          type="button"
+                          disabled={isSubmitting}
+                          onClick={() => {
+                            currentStepRef.current = TOTAL_STEPS;
+                            handleSubmit(onSubmit)();
+                          }}
+                        >
                           {isSubmitting ? (
                             <>
                               <Loader2 className="mr-2 h-4 w-4 animate-spin" />

@@ -2,14 +2,20 @@ import * as z from "zod";
 
 // Gift categories
 export const giftCategories = [
-  { value: "experiences", label: "Experiences (theme parks, events, etc.)" },
-  { value: "technology", label: "Technology (gaming, electronics)" },
-  { value: "furniture", label: "Furniture & Home Items" },
-  { value: "toys_games", label: "Toys & Games" },
-  { value: "travel", label: "Travel (accommodation, flights)" },
-  { value: "vouchers", label: "Gift Vouchers" },
-  { value: "services", label: "Services (professional, entertainment)" },
+  { value: "accommodation", label: "Accommodation" },
+  { value: "attractions_tickets", label: "Attractions + Tickets" },
+  { value: "characters_entertainers", label: "Characters + Entertainers" },
+  { value: "electronics", label: "Electronics" },
+  { value: "experiences", label: "Experiences" },
+  { value: "fashion_beauty", label: "Fashion & Beauty" },
+  { value: "food_drink", label: "Food & Drink" },
+  { value: "items", label: "Items" },
+  { value: "party", label: "Party" },
+  { value: "sport", label: "Sport" },
+  { value: "transport", label: "Transport" },
+  { value: "travel_provider", label: "Travel Provider" },
   { value: "other", label: "Other" },
+  { value: "vouchers", label: "Vouchers" },
 ] as const;
 
 // NZ Regions
@@ -34,17 +40,15 @@ export const nzRegions = [
 
 // Condition options
 export const conditionOptions = [
-  { value: "new", label: "New (unopened/unused)" },
-  { value: "like_new", label: "Like New (barely used)" },
-  { value: "good", label: "Good (minor wear)" },
-  { value: "fair", label: "Fair (visible wear, fully functional)" },
+  { value: "confirmed_new", label: "I confirm if my donation is an item it is brand new and in its original packaging." },
 ] as const;
 
 // Delivery preference options
 export const deliveryOptions = [
-  { value: "pickup", label: "I can arrange pickup/drop-off" },
-  { value: "delivery", label: "I can deliver to Make-A-Wish" },
+  { value: "pickup", label: "I will arrange pickup/drop-off" },
+  { value: "delivery", label: "I will deliver to Make-A-Wish" },
   { value: "flexible", label: "Flexible - let's discuss" },
+  { value: "na", label: "N/A" },
 ] as const;
 
 // Step 1: Donor Information
@@ -55,7 +59,13 @@ const donorInfoSchema = z.object({
   phone: z.string().min(1, "Phone number is required"),
   isOrganization: z.boolean().default(false),
   companyName: z.string().optional(),
-});
+}).refine(
+  (data) => !data.isOrganization || (data.companyName && data.companyName.length >= 1),
+  {
+    message: "Organisation/company name is required",
+    path: ["companyName"],
+  }
+);
 
 // Step 2: Gift Details
 const giftDetailsSchema = z.object({
@@ -67,7 +77,7 @@ const giftDetailsSchema = z.object({
     .optional(),
   estimatedValue: z.string().optional(),
   quantity: z.string().min(1, "Please specify quantity").default("1"),
-  condition: z.string().min(1, "Please select the item condition"),
+  condition: z.string().min(1, "Please confirm the condition of your donation"),
 });
 
 // Step 3: Logistics
@@ -84,13 +94,26 @@ const consentSchema = z.object({
   _honeypot: z.string().optional(),
 });
 
-// Combined schema
-export const giftInKindFormSchema = donorInfoSchema
-  .merge(giftDetailsSchema)
+// Combined schema — use intersection since donorInfoSchema has a refine()
+export const giftInKindFormSchema = z.object({
+  firstName: z.string().min(2, "First name must be at least 2 characters"),
+  lastName: z.string().min(2, "Last name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().min(1, "Phone number is required"),
+  isOrganization: z.boolean().default(false),
+  companyName: z.string().optional(),
+}).merge(giftDetailsSchema)
   .merge(logisticsSchema)
-  .merge(consentSchema);
+  .merge(consentSchema)
+  .refine(
+    (data) => !data.isOrganization || (data.companyName && data.companyName.length >= 1),
+    {
+      message: "Organisation/company name is required",
+      path: ["companyName"],
+    }
+  );
 
-export type GiftInKindFormData = z.infer<typeof giftInKindFormSchema>;
+export type GiftInKindFormData = z.input<typeof giftInKindFormSchema>;
 
 // Helper: Get fields for each step (for partial validation)
 export const getFieldsForStep = (step: number): (keyof GiftInKindFormData)[] => {

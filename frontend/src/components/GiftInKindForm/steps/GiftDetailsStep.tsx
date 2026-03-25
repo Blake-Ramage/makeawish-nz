@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   FormControl,
   FormField,
@@ -141,28 +141,21 @@ export function GiftDetailsStep({ form, isSubmitting }: Props) {
         control={form.control}
         name="condition"
         render={({ field }) => (
-          <FormItem className="space-y-3">
-            <FormLabel className="font-semibold">Condition *</FormLabel>
+          <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
             <FormControl>
-              <RadioGroup
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-                className="flex flex-col space-y-2"
+              <Checkbox
+                checked={field.value === "confirmed_new"}
+                onCheckedChange={(checked) => {
+                  field.onChange(checked ? "confirmed_new" : "");
+                }}
                 disabled={isSubmitting}
-              >
-                {conditionOptions.map((option) => (
-                  <FormItem
-                    key={option.value}
-                    className="flex items-center space-x-3 space-y-0"
-                  >
-                    <FormControl>
-                      <RadioGroupItem value={option.value} />
-                    </FormControl>
-                    <FormLabel className="font-normal">{option.label}</FormLabel>
-                  </FormItem>
-                ))}
-              </RadioGroup>
+              />
             </FormControl>
+            <div className="space-y-1 leading-none">
+              <FormLabel className="font-normal">
+                {conditionOptions[0].label}
+              </FormLabel>
+            </div>
             <FormMessage />
           </FormItem>
         )}

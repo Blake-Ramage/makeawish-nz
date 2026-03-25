@@ -85,7 +85,7 @@ export function LogisticsStep({ form, isSubmitting }: Props) {
           <FormItem className="space-y-3">
             <FormLabel className="font-semibold">Delivery Preference *</FormLabel>
             <FormDescription>
-              How would you prefer to get the gift to us?
+              How would you like to get the gift to us?
             </FormDescription>
             <FormControl>
               <RadioGroup
@@ -119,11 +119,11 @@ export function LogisticsStep({ form, isSubmitting }: Props) {
           <FormItem>
             <FormLabel className="font-semibold">Additional Notes</FormLabel>
             <FormDescription>
-              Any availability constraints, special handling instructions, or other details we should know?
+              Any other details we should know?
             </FormDescription>
             <FormControl>
               <Textarea
-                placeholder="e.g., Available weekdays only, item is fragile, etc."
+                placeholder=""
                 {...field}
                 rows={3}
                 className="resize-none"
