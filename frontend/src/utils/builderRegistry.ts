@@ -1393,7 +1393,7 @@ Builder.registerComponent(PartnersLogoSection, {
       {
         name: "columns",
         type: "number",
-        defaultValue: 4,
+        defaultValue: 3,
         helperText: "Number of columns on desktop (2, 3, or 4). Mobile always shows 2 columns.",
         enum: [2, 3, 4],
       },

@@ -78,7 +78,7 @@ export const IconCardsGrid = ({
     { icon: "sparkles", title: "Special Items", description: "Costumes, party supplies, decorations" },
     { icon: "heart", title: "Services", description: "Professional services, entertainment" },
   ],
-  columns = 4,
+  columns = 3,
   iconColor = "text-primary",
   titleColor = "text-gray-900",
   descriptionColor = "text-gray-600",
@@ -108,7 +108,7 @@ export const IconCardsGrid = ({
             {sectionSubtitle}
           </p>
         )}
-        <div className={`grid grid-cols-2 ${getGridCols()} gap-6`}>
+        <div className={`grid grid-cols-2 ${getGridCols()} gap-6 justify-items-center max-w-5xl mx-auto`}>
           {cards.map((card, index) => {
             const IconComponent = iconMap[card.icon] || Gift;
             return (
