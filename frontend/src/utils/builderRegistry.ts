@@ -265,10 +265,15 @@ Builder.registerComponent(PartnersLogoSection, {
         helperText: "Main headline (use standard formatting tools or <br /> for line breaks)",
       },
       {
+        name: "subtitle",
+        type: "richText",
+        helperText: "Optional subtext displayed beneath the title (e.g., a short description or call to action).",
+      },
+      {
         name: "titleColor",
         type: "text",
         defaultValue: "text-primary-foreground",
-        helperText: "Tailwind text color for the main title (e.g., 'text-white', 'text-primary', 'text-gray-800'). Defaults to light text suitable for dark/colored backgrounds.",
+        helperText: "Tailwind text color for the title and subtitle (e.g., 'text-white', 'text-primary', 'text-gray-800'). Defaults to light text suitable for dark/coloured backgrounds.",
       },
       // --- Button --- 
       {

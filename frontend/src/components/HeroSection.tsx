@@ -5,6 +5,7 @@ import { builder, Builder } from '@builder.io/react'; // Import Builder
 // Define props interface for Builder.io
 interface Props {
   title: string; // Using simple string, Builder will pass HTML from richText
+  subtitle?: string; // Optional subtext beneath the title
   imageUrl: string;
   imageAlt: string;
   // Optional props
@@ -15,8 +16,8 @@ interface Props {
   backgroundImageUrl?: string;
   backgroundColor?: string; // Tailwind bg class if no image e.g., 'bg-secondary'
   titleColor?: string; // Tailwind class e.g., 'text-white'
-  reverseLayout?: boolean; // Add this line
-  removeImage?: boolean; // Add this line
+  reverseLayout?: boolean;
+  removeImage?: boolean;
 }
 
 // Register component for props editing in Builder.io
@@ -27,6 +28,7 @@ interface Props {
 export const HeroSection = ({
   // Provide default values matching the original design
   title = "Transform lives,<br />one wish at a time.",
+  subtitle,
   imageUrl = "https://static.databutton.com/public/70b6a46a-5403-4152-84ce-6a9ec9a87a0f/Jaspers-Wish.webp",
   imageAlt = "Child receiving a wish",
   // Optional props with defaults or undefined
@@ -73,9 +75,15 @@ export const HeroSection = ({
           <div className={`${isCompact ? 'mb-0' : 'mb-10'} md:mb-0 ${removeImage ? 'md:w-full text-center' : `md:w-1/2 text-center md:text-left ${reverseLayout ? 'md:pl-12' : 'md:pr-12'}`}`}>
             {/* Use dangerouslySetInnerHTML for the title from Builder's richText */}
             <h1 
-              className={`text-4xl md:text-5xl lg:text-6xl font-bold ${showButton ? 'mb-6' : 'mb-0'} ${titleColor}`}
+              className={`text-4xl md:text-5xl lg:text-6xl font-bold ${subtitle ? 'mb-4' : (showButton ? 'mb-6' : 'mb-0')} ${titleColor}`}
               dangerouslySetInnerHTML={{ __html: title }} 
             />
+            {subtitle && (
+              <p 
+                className={`text-lg md:text-xl lg:text-2xl ${showButton ? 'mb-6' : 'mb-0'} ${titleColor} opacity-90 font-normal`}
+                dangerouslySetInnerHTML={{ __html: subtitle }}
+              />
+            )}
             {
               /* Conditionally render button with dynamic colors and centering logic */
               showButton && (
