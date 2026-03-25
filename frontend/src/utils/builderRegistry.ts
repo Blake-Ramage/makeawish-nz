@@ -270,6 +270,11 @@ Builder.registerComponent(PartnersLogoSection, {
         helperText: "Optional subtext displayed beneath the title (e.g., a short description or call to action).",
       },
       {
+        name: "subtitle",
+        type: "richText",
+        helperText: "Optional subtext displayed beneath the title.",
+      },
+      {
         name: "titleColor",
         type: "text",
         defaultValue: "text-primary-foreground",
