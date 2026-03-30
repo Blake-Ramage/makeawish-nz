@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://makeawish.org.nz/sitemap.xml
