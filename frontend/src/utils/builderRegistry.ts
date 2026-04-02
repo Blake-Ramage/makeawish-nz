@@ -1310,7 +1310,7 @@ Builder.registerComponent(PartnersLogoSection, {
       {
         name: "useBasinUrl",
         type: "url",
-        defaultValue: "https://usebasin.com/f/d3d78a10dc4c",
+        defaultValue: "https://usebasin.com/f/178e058a1cff",
         helperText: "The UseBasin endpoint URL where form submissions will be sent.",
       },
     ],
