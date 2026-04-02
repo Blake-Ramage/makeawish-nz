@@ -33,9 +33,9 @@ const DonateGiftInKind = () => {
           buttonTextColor="text-white"
         />
 
-        {/* What are gifts in kind? */}
+        {/* What are Gifts in Kind? */}
         <InfoSectionWithImage
-          title="What are gifts in kind?"
+          title="What are Gifts in Kind?"
           text="<p>A Gift in Kind is a non-monetary donation of goods, services or experiences. This could be anything from VIP seats at a rugby match, accommodation for a family during their wish trip, or a special dining experience at a local restaurant.</p><p>The generosity of New Zealand businesses and community supporters makes our wish-granting possible. From technology and travel to unique experiences, your contribution - big or small - can help create magical moments for wish children across Aotearoa.</p>"
           imageUrl="https://static.databutton.com/public/70b6a46a-5403-4152-84ce-6a9ec9a87a0f/Jaspers-Wish.webp"
           imageAlt="Child receiving a special gift"
@@ -44,7 +44,7 @@ const DonateGiftInKind = () => {
 
         {/* How to donate */}
         <InfoSectionWithImage
-          title="How to donate a gift in kind"
+          title="How to donate a Gift in Kind"
           text="<p>Ready to make a difference? Simply fill out our donation form below and our team will get back to you. We welcome gifts from both individuals and organisations.</p><p>Every wish child is unique, so we may not always have a wish that matches your specific offer right away. If that's the case, we'll work with you to explore other meaningful ways you can support Make-A-Wish NZ.</p>"
           imageUrl="https://static.databutton.com/public/70b6a46a-5403-4152-84ce-6a9ec9a87a0f/fundraiseimage.webp"
           imageAlt="Make-A-Wish team member"
@@ -104,7 +104,7 @@ Proof of purchase - If you are donating items, tickets or experiences that you h
               <p className="text-gray-600 text-lg leading-relaxed mb-8">
                 Every Gift in Kind helps us create special moments for wish children across New Zealand.
                 Whether it's tickets to see their favourite team play, a family meal at a special restaurant,
-                or technology that brings joy during treatment - your donation becomes part of a child's
+                or technology that brings joy during treatment — your donation becomes part of a child's
                 wish story. These contributions allow families to focus on what matters most: being together
                 and creating happy memories.
               </p>

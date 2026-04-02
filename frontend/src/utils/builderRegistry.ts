@@ -1293,7 +1293,7 @@ Builder.registerComponent(PartnersLogoSection, {
   // Register GiftInKindForm
   Builder.registerComponent(GiftInKindForm, {
     name: "Gift In Kind Form",
-    description: "Multi-step form for donating gifts in kind to Make-A-Wish NZ.",
+    description: "Multi-step form for donating Gifts in Kind to Make-A-Wish NZ.",
     inputs: [
       {
         name: "formTitle",

@@ -28,7 +28,7 @@ interface Props {
 const TOTAL_STEPS = 4;
 
 export function GiftInKindForm({
-  useBasinUrl = "https://usebasin.com/f/d3d78a10dc4c", // Using same endpoint as ContactForm for now
+  useBasinUrl = "https://usebasin.com/f/178e058a1cff",
   formTitle = "Donate a Gift in Kind",
   anchorId = "donation-form",
 }: Props) {
@@ -208,7 +208,7 @@ export function GiftInKindForm({
             </CardTitle>
             {submitStatus !== "success" && (
               <p className="text-center text-gray-600 pt-2">
-                Complete the form below to donate a gift in kind to Make-A-Wish New Zealand
+                Complete the form below to donate a Gift in Kind to Make-A-Wish New Zealand
               </p>
             )}
           </CardHeader>

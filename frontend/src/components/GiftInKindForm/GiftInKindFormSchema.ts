@@ -15,6 +15,7 @@ export const giftCategories = [
   { value: "transport", label: "Transport" },
   { value: "travel_provider", label: "Travel Provider" },
   { value: "other", label: "Other" },
+  { value: "services", label: "Services" },
   { value: "vouchers", label: "Vouchers" },
 ] as const;
 
