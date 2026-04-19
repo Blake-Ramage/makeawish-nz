@@ -445,6 +445,8 @@ Builder.registerComponent(PartnersLogoSection, {
       { name: "text", type: "longText", required: true, defaultValue: "Your support helps grant life-changing wishes..." },
       { name: "buttonText", type: "text", defaultValue: "", helperText: "Optional: Leave empty to hide the button." },
       { name: "buttonLink", type: "url", defaultValue: "", helperText: "Optional: URL for the button. Required if button text is provided." },
+      { name: "secondaryButtonText", type: "text", defaultValue: "", helperText: "Optional: Leave empty to hide the secondary button." },
+      { name: "secondaryButtonLink", type: "url", defaultValue: "", helperText: "Optional: URL for the secondary button." },
       {
         name: "backgroundImageUrl",
         type: "file",
@@ -487,6 +489,18 @@ Builder.registerComponent(PartnersLogoSection, {
         defaultValue: "text-blue-800",
         // CHANGE: helperText to guide Tailwind class input
         helperText: "Tailwind text color class for the button (e.g., 'text-blue-800', 'text-white').",
+      },
+      {
+        name: "secondaryButtonBgColor",
+        type: "text",
+        defaultValue: "bg-transparent",
+        helperText: "Tailwind background class for the secondary button (e.g., 'bg-transparent', 'bg-white/10').",
+      },
+      {
+        name: "secondaryButtonTextColor",
+        type: "text",
+        defaultValue: "text-white",
+        helperText: "Tailwind text color class for the secondary button (e.g., 'text-white').",
       },
     ],
   });

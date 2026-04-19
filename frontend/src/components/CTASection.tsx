@@ -6,6 +6,10 @@ interface Props {
   text: string;
   buttonText?: string;
   buttonLink?: string;
+  secondaryButtonText?: string;
+  secondaryButtonLink?: string;
+  secondaryButtonBgColor?: string;
+  secondaryButtonTextColor?: string;
   backgroundImageUrl?: string; // Optional background image URL
   backgroundImageAlt?: string; // Optional alt text for background image
   backgroundColor?: string; // e.g., 'bg-destructive', used if no background image
@@ -24,7 +28,11 @@ export const CTASection: React.FC<Props> = ({
   backgroundColor = 'bg-destructive', // Default background color if no image (Brand Red)
   textColor = 'text-white', // Default text color
   buttonBgColor = 'bg-white', // Default button background
-  buttonTextColor = 'text-blue-800' // Default button text color
+  buttonTextColor = 'text-blue-800', // Default button text color
+  secondaryButtonText,
+  secondaryButtonLink,
+  secondaryButtonBgColor = 'bg-transparent',
+  secondaryButtonTextColor = 'text-white',
 }) => {
   const sectionStyle = backgroundImageUrl
     ? {
@@ -49,13 +57,25 @@ export const CTASection: React.FC<Props> = ({
         <p className={`text-lg md:text-xl max-w-2xl mx-auto ${buttonText ? 'mb-8' : ''}`}>
           {text}
         </p>
-        {buttonText && buttonLink && (
-          <Link
-            to={buttonLink}
-            className={`inline-block ${buttonBgColor || 'bg-destructive-foreground'} ${buttonTextColor || 'text-destructive'} font-medium py-3 px-8 rounded-full transition duration-300`}
-          >
-            {buttonText}
-          </Link>
+        {(buttonText || secondaryButtonText) && (
+          <div className="flex flex-wrap justify-center gap-4">
+            {buttonText && buttonLink && (
+              <Link
+                to={buttonLink}
+                className={`inline-block ${buttonBgColor || 'bg-destructive-foreground'} ${buttonTextColor || 'text-destructive'} font-medium py-3 px-8 rounded-full transition duration-300`}
+              >
+                {buttonText}
+              </Link>
+            )}
+            {secondaryButtonText && secondaryButtonLink && (
+              <Link
+                to={secondaryButtonLink}
+                className={`inline-block ${secondaryButtonBgColor || 'bg-transparent'} ${secondaryButtonTextColor || 'text-white'} font-medium py-3 px-8 rounded-full border-2 border-current transition duration-300`}
+              >
+                {secondaryButtonText}
+              </Link>
+            )}
+          </div>
         )}
       </div>
     </section>
